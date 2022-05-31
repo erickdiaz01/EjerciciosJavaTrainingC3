@@ -14,7 +14,7 @@ int contadorU;
 int contadorEspacios;
 int contadorCaracteres;
     protected static final Scanner scanner = new Scanner(System.in);
-    private static final Logger LOGGER = Logger.getLogger("org.ejercicio10");
+    private static final Logger LOGGER = Logger.getLogger("org.ejercicio11");
    public Ejercicio11(){
 this.contadorEspacios=0;
 this.contadorE=0;
