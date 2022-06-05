@@ -1,9 +1,14 @@
 package org.ejercicio11;
 
 import java.util.Scanner;
-import java.util.logging.Logger;
 
-
+/**
+ *Clase perteneciente a la solucion del ejercicio 11, tiene como atributos contadores para cada vocal
+ * y para la longitud total del texto
+ *
+ * @author Erick Diaz
+ * @date 05-06-2022
+ */
 public class Ejercicio11 {
     String texto;
 int contadorA;
@@ -14,7 +19,12 @@ int contadorU;
 int contadorEspacios;
 int contadorCaracteres;
     protected static final Scanner scanner = new Scanner(System.in);
-    private static final Logger LOGGER = Logger.getLogger("org.ejercicio11");
+    static final org.jboss.logging.Logger logger = org.jboss.logging.Logger.getLogger("logger");
+
+    /**
+     * Inicializa los atributos contadores en cero
+     * @constructor
+     */
    public Ejercicio11(){
 this.contadorEspacios=0;
 this.contadorE=0;
@@ -23,13 +33,20 @@ this.contadorCaracteres=0;
 this.contadorA=0;
 this.contadorI=0;
 this.contadorO=0;
-   };
+   }
 
+    /**
+     * Imprime una peticion para que el usuario ingrese el texto a contabilizar
+     */
    public void getTexto(){
-       LOGGER.info("Ingrese el texto para saber su longitud y saber cuantas vocales tiene de cada una: ");
+       logger.info("Ingrese el texto para saber su longitud y saber cuantas vocales tiene de cada una: ");
        this.texto= scanner.nextLine();
    }
 
+    /**
+     * Metodo que contabiliza la cantidad de vocales y de caracteres del texto ingresado por el usuario
+     * @return La concatenacion del la informacion de la contabilizacion requerida
+     */
    public String textoConInformacionDeContador(){
 getTexto();
 
@@ -37,24 +54,25 @@ getTexto();
            char c = this.texto.charAt (i);
            String letra = String.valueOf(c);
            switch (letra){
-               case "a":case "A":
+               case "a","A":
                    this.contadorA+=1;
                    break;
-               case "e": case "E":
+               case "e","E":
                    this.contadorE+=1;
                    break;
-               case "i": case"I":
+               case "i","I":
                    this.contadorI+=1;
                    break;
-               case "o": case"O":
+               case "o","O":
                    this.contadorO+=1;
                    break;
-               case "u": case "U":
+               case "u", "U":
                    this.contadorU+=1;
                    break;
                case" ":
                    this.contadorEspacios+=1;
                    break;
+               default:
            }
        }
        this.contadorCaracteres= this.texto.length()-this.contadorEspacios;
@@ -64,9 +82,12 @@ getTexto();
                "Numero de caracteres en total: "+this.contadorCaracteres;
    }
 
+    /**
+     * Metodo que imprime el texto concatenado de la informacion
+     */
    public void mostrarTextoConInformacion(){
        String textoConInformacion = textoConInformacionDeContador();
-       LOGGER.info(textoConInformacion);
+       logger.info(textoConInformacion);
    }
 
 }

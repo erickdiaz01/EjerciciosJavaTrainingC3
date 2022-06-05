@@ -5,6 +5,13 @@ import org.jboss.logging.Logger;
 public class AppEjercicio18 {
     static final org.jboss.logging.Logger logger = Logger.getLogger("logger");
 
+    /**
+     * Este método principal instancia una lista de objetos de tipo "videojuegos" y
+     * una lista de objetos de tipo "series" con información respecto a el número de temporadas
+     * y el número de horas estimadas para luego mostrar el conteo de entregas, devoluciones
+     * y la serie con más temporadas y el videojuego con más horas estimadas
+     * @param args
+     */
     public static void main(String[] args) {
         Serie[] arraySeries = new Serie[5];
         Videojuego[] arrayVideojuegos = new Videojuego[5];

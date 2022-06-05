@@ -1,29 +1,45 @@
 package org.ejercicio12;
 
 import java.util.Scanner;
-import java.util.logging.Logger;
-
+/**
+ *Clase perteneciente a la solucion del ejercicio 12, tiene como atributos las palabras a comparar
+ *y sus diferencias
+ * @author Erick Diaz
+ * @date 05-06-2022
+ */
 public class Ejercicio12 {
     String palabra1;
     String palabra2;
     String diferencias;
 
     protected static final Scanner scanner = new Scanner(System.in);
-    private static final Logger LOGGER = Logger.getLogger("org.ejercicio10");
+    static final org.jboss.logging.Logger logger = org.jboss.logging.Logger.getLogger("logger");
 
+    /**
+     * Inicializa los atributos como Strings vacios
+     * @constructor
+     */
  public Ejercicio12(){
  this.palabra1="";
  this.palabra2="";
  this.diferencias="";
  }
 
+    /**
+     * Imprime las peticiones y captura los datos de las palabras a comparar
+     */
  public void getPalabras(){
-     LOGGER.info("Ingrese la primer palabra: ");
+     logger.info("Ingrese la primer palabra: ");
      this.palabra1= scanner.nextLine();
-     LOGGER.info("Ingrese la segunda palabra: ");
+     logger.info("Ingrese la segunda palabra: ");
      this.palabra2 = scanner.nextLine();
 
  }
+
+    /**
+     * Metodo que lleva el algoritmo para comparar las palabras y almacenar sus diferencias
+     * @return Un texto con la informacion de las diferencias
+     */
  public String compararPalabras() {
      if (this.palabra1.equals(this.palabra2)) {
          return "La palabra " + this.palabra1 + " es igual a la palabra " + this.palabra2;
@@ -65,9 +81,12 @@ public class Ejercicio12 {
      }
  }
 
+    /**
+     * Imprime el texto de las diferencias entre las palabras
+     */
  public void mostrarDiferencias(){
      String mostrandoDiferencias = compararPalabras();
-     LOGGER.info(mostrandoDiferencias);
+     logger.info(mostrandoDiferencias);
 
  }
 }

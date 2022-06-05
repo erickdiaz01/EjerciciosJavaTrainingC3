@@ -1,21 +1,31 @@
 package org.ejercicio15;
 
 import java.util.Scanner;
-import java.util.logging.Logger;
 
+/**
+ *Clase perteneciente a la solucion del ejercicio 15, tiene como atributo la opcion escogida por el usuario
+ * @author Erick Diaz
+ * @date 05-06-2022
+ */
 public class Ejercicio15 {
 int opcionEscogida;
 
     protected static final Scanner scanner = new Scanner(System.in);
-    private static final Logger LOGGER = Logger.getLogger("org.ejercicio15");
+    static final org.jboss.logging.Logger logger = org.jboss.logging.Logger.getLogger("logger");
 
+    /**
+     * Inicializa el atributo en 0
+     * @constructor
+     */
     public Ejercicio15(){
 this.opcionEscogida=0;
     }
 
-
+    /**
+     * Imprime el menu a mostrar al usuario
+     */
     public void mostrarMenu(){
-         LOGGER.info("****** GESTION CINEMATOGRÁFICA ********\n" +
+         logger.info("****** GESTION CINEMATOGRÁFICA ********\n" +
                 "1-NUEVO ACTOR\n" +
                 "2-BUSCAR ACTOR\n" +
                 "3-ELIMINAR ACTOR\n" +
@@ -28,24 +38,26 @@ this.opcionEscogida=0;
                 "Seleccione un número para ingresar a la opción indicada:");
     }
 
-
+    /**
+     * Metodo que se invoca en el metodo principal para manejar los eventos de la opcion escogida por el usuario
+     */
     public void elegirOpcion(){
         do{
 mostrarMenu();
 
  this.opcionEscogida= scanner.nextInt();
             switch (this.opcionEscogida){
-                case 1: case 2: case 3: case 4: case 5 : case 6: case 7:
-                    LOGGER.info("Opcion escogida " +this.opcionEscogida);
+                case 1, 2, 3,4, 5 , 6, 7:
+                    logger.info("Opcion escogida " +this.opcionEscogida);
                     break;
                 case 8:
                     continue;
                 default:
-                    LOGGER.info("OPCION ERRONEA, INGRESE UN NUMERO VALIDO: ");
+                    logger.info("OPCION ERRONEA, INGRESE UN NUMERO VALIDO: ");
                     break;
 
             }
         }while(this.opcionEscogida!=8);
-        LOGGER.info("HA SALIDO DEL MENU, GRACIAS POR UTILIZAR NUESTROS SERVICIOS");
+        logger.info("HA SALIDO DEL MENU, GRACIAS POR UTILIZAR NUESTROS SERVICIOS");
     }
 }

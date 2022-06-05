@@ -2,6 +2,12 @@ package org.ejercicio17;
 import org.jboss.logging.Logger;
 public class AppEjercicio17 {
     static final org.jboss.logging.Logger logger = Logger.getLogger("logger");
+
+    /**
+     * En este método principal se instancia una lista de objetos de tipo
+     * "electrodoméstico", "lavadora" y "televisor" para mostrar su precio según sus características
+     * @param args
+     */
     public static void main(String[] args) {
         Electrodomestico [] arrayElectrodomesticos = new Electrodomestico[10];
         for(int i=0;i<arrayElectrodomesticos.length-5;i++){
@@ -13,7 +19,9 @@ public class AppEjercicio17 {
         for(int i=8;i<arrayElectrodomesticos.length;i++){
             arrayElectrodomesticos[i]= new Television(i*200,"Blanco",'E',i*10,i*20,true);
         }
-        int precioTelevisores = 0,precioLavadoras =0,precioElectrodomesticos =0;
+        int precioTelevisores = 0;
+        int precioLavadoras =0;
+        int precioElectrodomesticos =0;
 
         for(int i=0;i<arrayElectrodomesticos.length;i++){
             Electrodomestico electrodomestico = arrayElectrodomesticos[i];
@@ -25,6 +33,7 @@ public class AppEjercicio17 {
             }else {
                 precioElectrodomesticos+=electrodomestico.precioFinal();
             }
+
         }
 
         logger.info("\nPrecio lavadoras: "+precioLavadoras+"\nPrecio televisores:"+precioTelevisores+"\nPrecio electrodomesticos: "+(precioElectrodomesticos+precioLavadoras+precioTelevisores));

@@ -2,6 +2,11 @@ package org.ejercicio16;
 
 import java.util.ArrayList;
 
+/**
+ *Clase perteneciente a la solucion del ejercicio 16, tiene como atributos los datos basicos de una persona
+ * @author Erick Diaz
+ * @date 05-06-2022
+ */
 public class Persona {
     private String nombre ;
    private  int edad ;
@@ -9,7 +14,12 @@ public class Persona {
    protected String sexo;
    private float peso;
     private float altura;
-public Persona(){
+
+    /**
+     * Inicializa los valores por defecto de la persona
+     * @constructor
+     */
+    public Persona(){
     this.nombre="";
     this.edad=0;
     this.sexo="H";
@@ -18,7 +28,16 @@ public Persona(){
     this.dni= generaDNI();
 
 }
-public Persona(String nombre, int edad, String sexo){
+
+    /**
+     * Constructor que inicializa los atributos que no son pasados como argumentos y construye
+     * el objeto persona completando la informacion con los argumentos correspondientes
+     * @constructor
+     * @param nombre
+     * @param edad
+     * @param sexo
+     */
+    public Persona(String nombre, int edad, String sexo){
     this.nombre=nombre;
     this.edad=edad;
     this.sexo=sexo;
@@ -26,6 +45,13 @@ public Persona(String nombre, int edad, String sexo){
 
 }
 
+    /**
+     * Constructor que  construye el objeto persona completando la informacion con los argumentos correspondientes
+     * @constructor
+     * @param nombre
+     * @param edad
+     * @param sexo
+     */
     public Persona(String nombre, int edad, String sexo, float peso, float altura) {
         this.nombre = nombre;
         this.edad = edad;
@@ -35,6 +61,10 @@ public Persona(String nombre, int edad, String sexo){
         this.altura = altura;
     }
 
+    /**
+     * Calcula el indice de masa corporal de una persona segun supeso y altura
+     * @return {int}un valor entero positivo, negativo o igual a cero dependiendo su rango de peso ideal
+     */
     public int calcularIMC(){
     final double imc = (this.peso/(Math.pow(this.altura,2)));
     if(imc<20){
@@ -45,6 +75,11 @@ public Persona(String nombre, int edad, String sexo){
         return 1;
     }
     }
+
+    /**
+     * Metodo que comprueba si la persona instanciada es mayor de edad o no
+     * @return {Boolean}
+     */
     public boolean esMayorDeEdad(){
      Boolean mayorDeEdad;
     if(this.edad<18){
@@ -55,6 +90,12 @@ public Persona(String nombre, int edad, String sexo){
             return mayorDeEdad;
         }
 }
+
+    /**
+     * Metodo que comprueba si el sexo ingresado es igual al sexo del atributo de la persona
+     * @param sexo
+     * @return {boolean}
+     */
   public boolean comprobarSexo(char sexo){
    String sexoStr=  String.valueOf(sexo);
    boolean sexosIguales;
@@ -68,22 +109,34 @@ public Persona(String nombre, int edad, String sexo){
    }
   }
 
-@Override
+    /**
+     * Metodo sobreescrito para devolver toda la informacion de la persona de manera entendible
+     * @return {String}
+     */
+    @Override
 public String toString(){
-String informacion = "Nombre: "+ this.nombre +"\n"+
+
+return"Nombre: "+ this.nombre +"\n"+
         "Edad: "+this.edad+"\n"+
         "DNI: "+this.dni+"\n"+
         "Sexo:"+this.sexo+"\n"+
         "Peso: "+this.peso+"\n"+
-        "Altura: "+ this.altura;
-return informacion;
+        "Altura: "+ this.altura ;
 }
 
-public String generaDNI(){
+    /**
+     * Genera aleatoreamente un numero y a su vez una letra segun ese numero para darselo al DNI
+     * @return {String}
+     */
+    public String generaDNI(){
  String numeroDelDNI = generarNumeroDelDNI();
 String letraDelDNI= generarLetraDelDNI(numeroDelDNI);
 return numeroDelDNI+letraDelDNI;
 }
+    /**
+     * Genera aleatoreamente un numero para que sea la parte numerica del DNI
+     * @return {String}
+     */
 public String generarNumeroDelDNI(){
     ArrayList<String> dniNumeros= new ArrayList<>();
 
@@ -92,10 +145,17 @@ public String generarNumeroDelDNI(){
         dniNumeros.add(String.valueOf(numeroTemporal));
 
     }
-    String hash = String.join("", dniNumeros);
-    return hash;
+
+    return  String.join("", dniNumeros);
 }
-public String generarLetraDelDNI(String numeroDNI){
+
+    /**
+     * Metodo que a partir de la parte numerica del DNI le asigna una letra al final para aumentar la seguridad
+     * antisuplantacion
+     * @param numeroDNI
+     * @return {String}
+     */
+    public String generarLetraDelDNI(String numeroDNI){
     int numeroTemporal = Integer.parseInt(numeroDNI);
     int resudio = numeroTemporal % 23;
     String letra = "";
@@ -170,9 +230,15 @@ public String generarLetraDelDNI(String numeroDNI){
         case 22:
             letra= "E";
             break;
+        default:letra="";
     }
     return letra;
 }
+
+    /**
+     * Setters y getters de los atributos
+     *
+     */
 
     public void setNombre(String nombre) {
         this.nombre = nombre;

@@ -3,6 +3,12 @@ package org.ejercicio17;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ *Clase perteneciente a la solucion del ejercicio 17, tiene como atributos las caracteristicas basicas
+ * de un electrodomestico
+ * @author Erick Diaz
+ * @date 05-06-2022
+ */
 public class Electrodomestico {
     protected final int precioBase;
     protected final String color;
@@ -11,7 +17,10 @@ public class Electrodomestico {
 
     private final List <String> colores = Arrays.asList("blanco","negro","rojo","azul","gris");
 
-
+    /**
+     * Es el constructor por defecto e inicializa los atributos segun los requerimientos estandar
+     * @constructor
+     */
     public Electrodomestico() {
         this.color = "Blanco";
         this.consumoEnergetico = 'F';
@@ -19,6 +28,12 @@ public class Electrodomestico {
         this.precioBase = 100;
     }
 
+    /**
+     * Constructor que recibe como parametros el precio base y el peso, el resto son valores por defecto
+     * @constructor
+     * @param precioBase
+     * @param peso
+     */
     public Electrodomestico(int precioBase, int peso) {
         this.precioBase = precioBase;
         this.peso = peso;
@@ -26,6 +41,14 @@ public class Electrodomestico {
         this.consumoEnergetico = 'F';
     }
 
+    /**
+     * Metodo constructor que instancia el objeto con todos los parametros ingresados,
+     * adicionalmente realiza una validacion para los atributos de color y consumo energetico
+     * @param precioBase
+     * @param color
+     * @param consumoEnergetico
+     * @param peso
+     */
     public Electrodomestico(int precioBase, String color, char consumoEnergetico, int peso) {
         this.precioBase = precioBase;
         this.peso = peso;
@@ -45,7 +68,10 @@ public class Electrodomestico {
 
     }
 
-
+    /**
+     *
+     * Metodos Getter
+     */
     public int getPrecioBase() {
         return precioBase;
     }
@@ -62,10 +88,21 @@ public class Electrodomestico {
         return peso;
     }
 
-
+    /**
+     * Verifica si el valor ingresado es una letra diferente al rango A-F
+     * @param letra
+     * @return {boolean}
+     */
     private boolean comprobarConsumoEnergetico(char letra) {
         return letra>'F';
     }
+
+    /**
+     * Comprueba si el color ingresado para instanciar el objeto esta dentro de la lista
+     * de los colores disponibles en la tienda
+     * @param color
+     * @return {boolean}
+     */
     public boolean comprobarColor(String color){
       for(int i=0;i<colores.size();i++){
            String colorElement = colores.get(i);
@@ -78,6 +115,10 @@ public class Electrodomestico {
       return false;
     }
 
+    /**
+     * Metodo que suma al precio base segun las caracteristicas del electrodomestico unos valores determinados
+     * @return {int}
+     */
     public int precioFinal(){
         int precio=this.precioBase;
         switch (this.consumoEnergetico){
